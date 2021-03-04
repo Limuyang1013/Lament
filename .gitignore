@@ -1,0 +1,30 @@
+# Mac.
+.DS_Store
+
+# Node modules.
+node_modules/
+
+lerna-debug.log
+yarn-error.log
+package-lock.json
+
+.cache-loader
+.cache/
+
+# Jest
+.coverage-report
+
+# Rollup
+.rpt2_cache
+
+# Debug log.
+npm-debug.log
+selenium-debug.log
+
+# IDEs.
+.idea/
+.vscode/
+
+playground/live-bridge/dist/
+
+**/*.tgz
