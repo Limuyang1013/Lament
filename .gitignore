@@ -28,3 +28,4 @@ selenium-debug.log
 playground/live-bridge/dist/
 
 **/*.tgz
+/.eslintcache
