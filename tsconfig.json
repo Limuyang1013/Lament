@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "incremental": true,
     "target": "ESNext",
-    "module": "CommonJS",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "sourceMap": true,
     "lib": [
       "esnext",
       "dom"

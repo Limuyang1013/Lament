@@ -1,13 +1,18 @@
+const path = require('path')
+const resolve = _path => path.resolve(__dirname, _path)
+
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es6": true
     },
     "extends": [
         "airbnb-base"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
+        "project": resolve('./tsconfig.json'),
+        "tsconfigRootDir": resolve('./'),
         "ecmaVersion": 12,
         "sourceType": "module"
     },
@@ -15,11 +20,12 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "import/extensions": "off",
         "no-restricted-globals": "off",
         "no-useless-constructor": 0,
         "no-extra-semi": 2,
         "semi": 0,
-        "no-unused-vars": 2
+        "comma-dangle": 0,
+        "no-unused-vars": 'error',
+        'no-console': 'off',
     }
 };

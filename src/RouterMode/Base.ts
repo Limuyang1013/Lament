@@ -11,7 +11,11 @@ export abstract class Base {
     this.current = {
       path: '/',
       name: '',
-      component: '',
+      component: {
+        render: () => {
+          return ''
+        }
+      },
       redirect: '',
       callback: () => {},
     }

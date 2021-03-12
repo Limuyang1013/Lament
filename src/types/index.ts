@@ -2,7 +2,9 @@
 export interface Route {
   path?: string
   name?: string
-  component: HTMLElement | string
+  component: {
+    render(): string
+  }
   redirect?: string
   callback?: Function
 }
@@ -11,4 +13,9 @@ export interface Route {
 export interface RouterOptions {
   mode?: string
   routes?: Route[]
+}
+
+export enum ROUTER_MODE {
+  HASH = 'hash',
+  HISTORY = 'history'
 }

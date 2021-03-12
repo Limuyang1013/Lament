@@ -1,13 +1,9 @@
 import {
   Route,
   RouterOptions,
+  ROUTER_MODE
 } from './types'
-import HashRouter from './RouterMode/HashRoute'
-
-export enum ROUTER_MODE {
-  HASH = 'hash',
-  HISTORY = 'history'
-}
+import HashRouter from './RouterMode/HashRoute.ts'
 
 export default class LamentRouter {
   // 当前路由对象
