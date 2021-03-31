@@ -9,3 +9,23 @@ This is a Lightweight pure native routing
 
 ## API
 
+#### push(options: Route)
+
+动态的导航到一个新 URL
+
+```js
+export interface Route {
+  path: string
+  name?: string
+  component: {
+    render(): string
+  }
+  params?: Dictionary<string>
+  redirect?: string
+  callback?: Function
+}
+```
+
+#### get currentRoute(): Route
+
+获取当前路由对象
