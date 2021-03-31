@@ -4,7 +4,7 @@ This is a Lightweight pure native routing
 
 ## QuickStart
 
-> npm imstall lament
+[![NPM](https://nodei.co/npm/lament.png?compact=true)](https://npmjs.org/package/npm-badge)
 
 ```javascript
 import LamentRouter from 'Lament'
