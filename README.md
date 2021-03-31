@@ -1,2 +1,8 @@
 # Lament
-Lightweight pure native routing
+
+> This is a Lightweight pure native routing
+
+## QuickStart
+
+> npm imstall lament
+
