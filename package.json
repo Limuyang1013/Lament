@@ -1,7 +1,7 @@
 {
   "name": "lament",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lightweight routing implementation",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "scripts": {
@@ -28,5 +28,8 @@
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "dependencies": {
+    "path-to-regexp": "^6.2.0"
+  }
 }

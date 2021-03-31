@@ -3,11 +3,11 @@ import {
   RouterOptions,
   ROUTER_MODE
 } from './types'
-import HashRouter from './RouterMode/HashRoute.ts'
+import { HashRouter, HistoryRouter } from './RouterMode'
 
 export default class LamentRouter {
   // 当前路由对象
-  routes!: HashRouter
+  router!: HashRouter | HistoryRouter
 
   options: RouterOptions
 
@@ -19,9 +19,10 @@ export default class LamentRouter {
 
     switch (this.mode) {
       case ROUTER_MODE.HASH:
-        this.routes = new HashRouter(this, this.options.routes)
+        this.router = new HashRouter(this, this.options.routes)
         break
       case ROUTER_MODE.HISTORY:
+        this.router = new HistoryRouter(this, this.options.routes)
         break
       default:
         break
@@ -29,6 +30,10 @@ export default class LamentRouter {
   }
 
   get currentRoute(): Route {
-    return this.routes && this.routes.current
+    return this.router && this.router.current
+  }
+
+  push(options: Route) {
+    this.router.push(options)
   }
 }

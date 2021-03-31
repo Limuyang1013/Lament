@@ -1,15 +1,16 @@
-/* 单路由配置 * */
+export type Dictionary<T> = { [key: string]: T }
+
 export interface Route {
-  path?: string
+  path: string
   name?: string
   component: {
     render(): string
   }
+  params?: Dictionary<string>
   redirect?: string
   callback?: Function
 }
 
-/* 路由初始化参数 * */
 export interface RouterOptions {
   mode?: string
   routes?: Route[]
@@ -18,4 +19,8 @@ export interface RouterOptions {
 export enum ROUTER_MODE {
   HASH = 'hash',
   HISTORY = 'history'
+}
+
+export interface IState {
+  path: string
 }

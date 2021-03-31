@@ -12,14 +12,13 @@ export abstract class Base {
       path: '/',
       name: '',
       component: {
-        render: () => {
-          return ''
-        }
+        render: () => ''
       },
       redirect: '',
-      callback: () => {},
+      params: {},
+      callback: () => {}
     }
   }
 
-  abstract push(path: string): void
+  abstract push(options: Route): void
 }

@@ -11,42 +11,57 @@ export default class HashRouter extends Base {
     this.init(this.routes)
   }
 
-  /***
-   * 定位到默认路由
+  /** *
+   * 注册默认路由
    * @param {Route[]} routes
    */
   init(routes: Route[]) {
     this.register()
   }
 
-  /***
+  /**
    * 获取当前url的hash地址
    * @returns {string}
    */
-  parseHash (): string {
+  parseHash(): string {
     return location.hash.slice(1).toLowerCase() || '/'
+  }
+
+  /**
+   * 获取纯url地址
+   * @returns {string}
+   */
+  parsePureUrl(): string {
+    return location.href.split('#')[0]
   }
 
   routeTo(path: string) {
     const currentRoute = this.findComponentByPath(path, this.routes)
     if (currentRoute) {
-      const { component } = currentRoute
+      const { component, redirect } = currentRoute
+      if (redirect) {
+        window.location.replace(`${this.parsePureUrl()}#${redirect}`)
+        return
+      }
       document.getElementById('app')!.innerHTML = component.render()
       this.current = currentRoute
     }
   }
 
-  findComponentByPath (path: string, routes: Route[]): Route | undefined {
-    const routePath = routes.find(r => r.path === path)
-    return routePath && routePath.redirect ? this.findComponentByPath(routePath.redirect, this.routes) : routePath
+  findComponentByPath(path: string, routes: Route[]): Route {
+    return <Route>routes.find((r) => r.path === path)
   }
 
   register() {
-    window.addEventListener('hashchange', () => { this.routeTo(this.parseHash())})
-    window.addEventListener('load', () => { this.routeTo(this.parseHash())})
+    window.addEventListener('hashchange', () => { this.routeTo(this.parseHash()) })
+    window.addEventListener('load', () => { this.routeTo(this.parseHash()) })
   }
 
-  push(path: string) {
+  push(options: Route) {
+    const { path, params } = options
+    if (path === this.parseHash()) {
+      return
+    }
     location.hash = `#${path}`
   }
 }
