@@ -1,0 +1,32 @@
+{
+  "name": "lament",
+  "version": "1.0.0",
+  "description": "Lightweight routing implementation",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "dev": "set NODE_ENV=developemnt&& rollup -c rollup.config.js -w",
+    "build": "rm -fr lib && set NODE_ENV=production&& rollup -c rollup.config.js",
+    "lint": "eslint src --ext .ts --cache --fix"
+  },
+  "author": "zhan yue",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.17.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "pre-commit": "^1.2.2",
+    "rollup": "^2.41.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "typescript": "^4.2.2"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}

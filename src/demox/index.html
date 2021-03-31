@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<body>
+<script type="module"  src="../../lib/index.js"></script>
+<script type="module">
+  import LamentRouter from '../../lib'
+  const Page1Component = {
+    render: () => {
+      return `
+      <section>
+        <h1>Page 1</h1>
+        <p>This is just a test</p>
+      </section>
+    `;
+    }
+  }
+
+  const Page2Component = {
+    render: () => {
+      return `
+      <section>
+        <h1>Page 2</h1>
+        <p>This is just a test</p>
+      </section>
+    `;
+    }
+  }
+
+  const Page3Component = {
+    render: () => {
+      return `
+      <section>
+        <h1>Page 3</h1>
+        <p>This is just a test</p>
+      </section>
+    `;
+    }
+  }
+
+  const Page404Component = {
+    render: () => {
+      return `
+      <section>
+        <h1>Page 404</h1>
+        <p>This is just a error page</p>
+      </section>
+    `;
+    }
+  }
+
+  let router = new LamentRouter({
+    mode: 'hash',
+    routes: [
+      {
+        path: '/',
+        redirect: '/page1',
+        component: Page1Component
+      },
+      {
+        path: '/page1',
+        component: Page1Component
+      },
+      {
+        path: '/page2',
+        component: Page2Component
+      },
+      {
+        path: '/page3',
+        component: Page3Component
+      },
+      {
+        path: '/404',
+        component: Page404Component
+      }
+    ]
+  })
+  const ul = document.querySelector('ul');
+  ul.addEventListener('click', (e) => {
+    e.preventDefault()
+    router.push({
+      path: e.target.getAttribute('href')
+    })
+  })
+</script>
+<h1 id="app">空白页</h1>
+<ul>
+    <li><a href="/page1">page1</a></li>
+    <li><a href="/page2">page2</a></li>
+    <li><a href="/page3">page3</a></li>
+</ul>
+</body>
+</html>
